@@ -1,0 +1,16 @@
+{
+  "name": "ufs",
+  "version": "1.0.0",
+  "main": "ufs.js",
+  "scripts": {
+    "dev": "node build/dev.js",
+    "build": "node build/build.js",
+    "test": "npm run test:node && npm run test:browser",
+    "test:browser": "npx http-server -c-1 test/browser -o",
+    "test:node": "node test/node/test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
