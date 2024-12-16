@@ -1,5 +1,5 @@
 {
-  "name": "ufs",
+  "name": "@allnulled/universal-file-system",
   "version": "1.0.0",
   "main": "ufs.js",
   "scripts": {
@@ -11,6 +11,15 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "WTFPL",
+  "description": "Usa localStorage en browser y fs en node.js.",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "mocha": "^10.7.3"
+  }
 }

@@ -1,5 +1,17 @@
 # universal-file-system
 
+Sistema de ficheros universal, para node.js y browser.
+
+No tiene dependencias y funciona igual en browser como en node.js.
+
+## Instalación
+
+```sh
+npm install @allnulled/universal-file-system
+```
+
+## API
+
 Usa localStorage en browser y fs en node.js.
 
 Los métodos son síncronos, y son estos:
