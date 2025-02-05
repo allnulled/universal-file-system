@@ -1,6 +1,6 @@
 {
   "name": "@allnulled/universal-file-system",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/ufs.js",
   "scripts": {
     "dev": "node build/dev.js",

@@ -28,6 +28,7 @@ Los métodos son síncronos, y son estos:
 - `exists(node)`: devuelve si existe o no.
 - `is_file(node)`: devuelve si es fichero o no.
 - `is_directory(node)`: devuelve si es directorio o no.
+- `rename(name, newName)`: le cambia el nombre a un fichero o directorio.
 
 ## Uso
 
