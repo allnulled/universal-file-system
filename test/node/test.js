@@ -13,12 +13,12 @@ const print_assertion = function (msg) {
 const print_error = function (msg) {
   console.log("Error: ", msg);
 }
-const main_test = async function () {
+const localStorage_test = async function () {
   try {
-    print("Starting main test of UFS (Universal Filesystem) (mode: browser)");
+    print("Starting main test of UFS (Universal Filesystem) (mode: localStorage)");
     print_assertion("It can create an instance");
     const UFS_manager = require(__dirname + "/../../dist/ufs.js");
-    const ufs = UFS_manager.create();
+    const ufs = UFS_manager.driver("node").create();
     global.ufs = ufs;
     print_assertion("It can find every method as function");
     Test: {
@@ -142,5 +142,12 @@ const main_test = async function () {
     console.log(error);
     throw error;
   }
+};
+const idb_test = async () => {
+
+};
+const main_test = async () => {
+  await idb_test();
+  await localStorage_test();
 };
 module.exports = main_test();

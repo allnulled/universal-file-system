@@ -12,7 +12,7 @@ npm install @allnulled/universal-file-system
 
 ## API
 
-Usa localStorage en browser y fs en node.js.
+Usa localStorage o IDB en browser y fs en node.js.
 
 Los métodos son síncronos, y son estos:
 
@@ -29,14 +29,18 @@ Los métodos son síncronos, y son estos:
 - `is_file(node)`: devuelve si es fichero o no.
 - `is_directory(node)`: devuelve si es directorio o no.
 
-Creo que hay otro proyecto, así que puedes ver este como innecesario y redundante, además imita la API de node.js.
+## Uso
 
-De primeras, este proyecto parece ser el oficial.
+Para empezar a usarlo bien, deberías especificar el driver que quieres usar, y las opciones son estas:
 
-- [https://github.com/zen-fs/core](https://github.com/zen-fs/core)
+```js
+const nodeFs = UFS_manager.driver("node").create();
+const localStorageFs = UFS_manager.driver("localStorage").create(dbId);
+const idbFs = UFS_manager.driver("idb").create(dbId);
+```
 
-No voy a perder el tiempo, ahora no quiero emular node.js entero en el browser, y sé que se puede porque hay vscode en browser.
+Luego ya puedes usar la API que sea de la misma forma, con las salvedades que tenga, como llamadas asíncronas, o API interna, pero los contratos de los métodos son prácticamente iguales.
 
-Pero ahora mismo no estoy por esas, si buscas en Google: browser fs node.js, te sale esto.
+## Test
 
-Vale. Esto es un script ligero que te hace el parche. Fin.
+Puedes ver los tests dentro.

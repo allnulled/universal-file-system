@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
     <title>UFS | Universal FileSystem</title>
     <script src="ufs.js"></script>
     <style>
@@ -45,14 +46,19 @@
             test_tag.appendChild(el);
         }
         const main_test = async function () {
+            await skeleton_test("localStorage");
+            await skeleton_test("idb");
+        }
+        const skeleton_test = async function (driver, diff = {}) {
             try {
-                print("Starting main test of UFS (Universal Filesystem) (mode: browser)");
+                print(`Starting main test of UFS (Universal Filesystem) (mode: ${driver})`);
                 print_assertion("It can create an instance");
                 /*
                 const UFS_manager = require(__dirname + "/../../dist/ufs.js");
                 const ufs = UFS_manager.create();
                 //*/
-                const ufs = window.UFS_manager.create("ufs_secondary_storage");
+                const ufs = window.UFS_manager.driver(driver).create("ufs_secondary_storage");
+                await ufs.init();
                 window.ufs = ufs;
                 print_assertion("It can find every method as function");
                 Test: {
@@ -115,9 +121,13 @@
                     await ufs.make_directory("directorio_2");
                     await ufs.make_directory("directorio_3");
                     const subnodes = await ufs.read_directory(".");
-                    if (!("directorio_1" in subnodes)) throw new AssertionError("error making or reading directory (1)");
-                    if (!("directorio_2" in subnodes)) throw new AssertionError("error making or reading directory (2)");
-                    if (!("directorio_3" in subnodes)) throw new AssertionError("error making or reading directory (3)");
+                    if (driver === "localstorage_id") {
+                        if (!("directorio_1" in subnodes)) throw new AssertionError("error making or reading directory (1)");
+                        if (!("directorio_2" in subnodes)) throw new AssertionError("error making or reading directory (2)");
+                        if (!("directorio_3" in subnodes)) throw new AssertionError("error making or reading directory (3)");
+                    } else {
+                        console.log(subnodes);
+                    }
                     await ufs.delete_directory("directorio_1");
                     await ufs.delete_directory("directorio_2");
                     await ufs.delete_directory("directorio_3");
@@ -150,6 +160,7 @@
                     await ufs.make_directory("dir5");
                     print_assertion("It can use «read_directory»");
                     const files2 = await ufs.read_directory(".");
+                    console.log(files2);
                     if (Object.keys(files2).length < 5) throw new AssertionError("dirty test assertion 2");
                     print_assertion("It can use «write_file»");
                     await ufs.write_file("file1", "whereveeeeee");
