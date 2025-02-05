@@ -15,11 +15,5 @@
   "description": "Usa localStorage en browser y fs en node.js.",
   "directories": {
     "test": "test"
-  },
-  "dependencies": {
-    
-  },
-  "devDependencies": {
-    "mocha": "^10.7.3"
   }
 }
